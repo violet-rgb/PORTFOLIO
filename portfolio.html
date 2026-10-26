@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adithya B – Implementation Analyst Portfolio</title>
+<meta name="description" content="Portfolio of Adithya B: SQL, reporting, data validation and software testing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f6f8fa;--surface:#ffffff;--ink:#14212b;--muted:#4d5d69;--line:#d6dee5;
+  --accent:#0b6e8a;--accent-ink:#ffffff;--mark:#fde68a;--code-bg:#0f1b24;--code-ink:#d9e6ee;--code-key:#6cc4e0;--code-str:#f2c46d;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--bg:#0e161d;--surface:#16212a;--ink:#e8eef3;--muted:#a3b2bd;--line:#2a3a46;
+  --accent:#5cc3e0;--accent-ink:#0e161d;--mark:#5b4a12;--code-bg:#09111616;--code-bg:#091116;
+}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0e161d;--surface:#16212a;--ink:#e8eef3;--muted:#a3b2bd;--line:#2a3a46;--accent:#5cc3e0;--accent-ink:#0e161d;--mark:#5b4a12;--code-bg:#091116}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:880px;margin:0 auto;padding:0 1.25rem}
+header.top{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;align-items:center;padding:1.25rem 0;border-bottom:1px solid var(--line)}
+header.top strong{font-weight:700;letter-spacing:.01em}
+nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem}
+nav a{color:var(--muted);text-decoration:none;font-size:.95rem}
+nav a:hover{color:var(--accent);text-decoration:underline}
+.hero{padding:3.5rem 0 2.5rem}
+.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.08;margin:0 0 .75rem;font-weight:700;letter-spacing:-.02em;max-width:16ch}
+.hero p.lead{font-size:1.2rem;color:var(--muted);max-width:56ch;margin:0 0 1.75rem}
+.query{background:var(--code-bg);color:var(--code-ink);border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.query pre{margin:0;padding:1.1rem 1.25rem;font:500 .95rem/1.7 var(--mono);overflow-x:auto}
+.k{color:var(--code-key)}.s{color:var(--code-str)}
+.result{border-top:1px solid #2a3a46;font:400 .92rem/1.6 var(--mono);overflow-x:auto}
+.result dl{margin:0;display:grid;grid-template-columns:max-content 1fr;min-width:0}
+.result dt,.result dd{margin:0;padding:.5rem 1.25rem;border-bottom:1px solid #1c2b36}
+.result dt{color:#8fa4b3}
+.result dd{color:var(--code-ink)}
+.result dl>:nth-last-child(-n+2){border-bottom:0}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.btn{display:inline-block;padding:.7rem 1.2rem;border-radius:8px;font-weight:700;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent)}
+.btn:hover{filter:brightness(1.08)}
+section{padding:2.5rem 0;border-top:1px solid var(--line)}
+section h2{font-size:1.6rem;line-height:1.2;margin:0 0 1.25rem;letter-spacing:-.01em}
+p{margin:0 0 1rem;max-width:68ch}
+.skills{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.skills div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem}
+.skills h3{margin:0 0 .4rem;font-size:1rem}
+.skills p{margin:0;color:var(--muted);font-size:.97rem}
+.job{margin-bottom:1.75rem}
+.job h3{margin:0;font-size:1.1rem;line-height:1.35}
+.job .when{color:var(--muted);font-size:.93rem;margin:.1rem 0 .5rem}
+ul{margin:0;padding-left:1.2rem;max-width:68ch}
+li{margin-bottom:.35rem}
+.now{background:var(--mark);padding:0 .35em;border-radius:4px;font-size:.85rem;font-weight:500;margin-left:.4rem;white-space:nowrap}
+.projects{display:grid;gap:1.1rem}
+.proj{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:1.1rem 1.25rem}
+.proj h3{margin:0 0 .2rem;font-size:1.1rem}
+.proj .stack{font:400 .85rem/1.5 var(--mono);color:var(--muted);margin:0 0 .5rem}
+.proj p{margin:0}
+.edu p{margin-bottom:.6rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:0;list-style:none}
+.chips li{margin:0;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.3rem .85rem;font-size:.95rem}
+.contact a.big{font-size:1.25rem;font-weight:700;word-break:break-all}
+.contact ul{list-style:none;padding:0;margin:1rem 0 0}
+footer{border-top:1px solid var(--line);padding:1.5rem 0 2rem;color:var(--muted);font-size:.9rem}
+@media (max-width:520px){.result dl{grid-template-columns:1fr}.result dt{padding-bottom:0;border-bottom:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <strong>Adithya B</strong>
+  <nav aria-label="Sections">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero">
+  <h1>I turn raw data into reports people can trust.</h1>
+  <p class="lead">Computer Science graduate and Data Analyst Intern, looking for an Implementation Analyst role where SQL, testing and clear communication meet client needs.</p>
+  <div class="query" role="group" aria-label="A SQL query that describes me">
+    <pre><span class="k">SELECT</span> name, role, strengths, location
+<span class="k">FROM</span>   candidates
+<span class="k">WHERE</span>  name = <span class="s">'Adithya B'</span>;</pre>
+    <div class="result">
+      <dl>
+        <dt>name</dt><dd>Adithya B</dd>
+        <dt>role</dt><dd>Implementation Analyst (fresher)</dd>
+        <dt>strengths</dt><dd>SQL, Excel, Python, Power BI, software testing</dd>
+        <dt>location</dt><dd>Thiruvananthapuram, Kerala, India</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="cta">
+    <a class="btn primary" href="mailto:adithyabiju1133@gmail.com">Email me</a>
+    <a class="btn ghost" href="https://linkedin.com/in/aadithyaabiju23" rel="noopener">View LinkedIn</a>
+    <a class="btn ghost" href="https://github.com/violet-rgb" rel="noopener">View GitHub</a>
+  </div>
+</div>
+
+<section id="about">
+  <h2>About me</h2>
+  <p>I graduated in 2025 with a B.Tech in Computer Science Engineering. Since then I have worked with healthcare data at the State Health Agency, Kerala, where I check accuracy, flag discrepancies and present findings in Power BI dashboards.</p>
+  <p>I also trained in software testing, so I care about getting the data and the configuration right before anything reaches a client. I like documenting my work and explaining it plainly to both technical and non-technical people.</p>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div><h3>SQL and programming</h3><p>SQL, SQLite, Python, pseudo-code, Pandas, NumPy</p></div>
+    <div><h3>Reporting and analytics</h3><p>Excel (advanced, pivot tables, lookups), Power BI, Tableau, KPI reporting, statistical analysis</p></div>
+    <div><h3>QA and data quality</h3><p>Software testing, defect reporting, data validation, data cleaning, exploratory analysis</p></div>
+    <div><h3>Tools and working style</h3><p>MS Office, JIRA, Git, GitHub, Jupyter. Documentation, written and verbal communication, problem solving, time management</p></div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="job">
+    <h3>Data Analyst Intern, State Health Agency, Kerala <span class="now">Current</span></h3>
+    <p class="when">08/2026 – Present</p>
+    <ul>
+      <li>Analyse healthcare datasets and spreadsheets to support reporting requirements.</li>
+      <li>Validate data accuracy and report discrepancies to keep reports reliable.</li>
+      <li>Build Power BI dashboards and reports that present findings clearly to stakeholders.</li>
+      <li>Document work and communicate findings to team members while meeting task deadlines.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <h3>Data Science Intern, Cognifyz Technologies (Virtual)</h3>
+    <ul><li>Cleaned, preprocessed and analysed real-world datasets with Python, Pandas and NumPy, and built and evaluated machine learning models with Scikit-learn.</li></ul>
+  </div>
+  <div class="job">
+    <h3>Data Analytics Virtual Internship, Deloitte (via Forage)</h3>
+    <ul><li>Cleaned data in Excel and built a Tableau dashboard in a job simulation, turning datasets into stakeholder-ready reports.</li></ul>
+  </div>
+  <div class="job">
+    <h3>Data Science and Data Analytics Intern, ICT Academy</h3>
+    <ul><li>Trained in Python, SQL, statistics, machine learning and business intelligence, and practised end-to-end analysis with Power BI and Tableau.</li></ul>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <article class="proj">
+      <h3>Biometric Attendance Management System</h3>
+      <p class="stack">Python, OpenCV, SQLite</p>
+      <p>Facial recognition attendance system that stores records in an SQLite database, reducing manual errors and improving record keeping.</p>
+    </article>
+    <article class="proj">
+      <h3>Personal Finance Intelligence Platform</h3>
+      <p class="stack">Python, Pandas, Streamlit, Plotly</p>
+      <p>Interactive dashboard that analyses income, expenses and savings. Data cleaning and exploratory analysis turn raw transactions into analysis-ready data.</p>
+    </article>
+    <article class="proj">
+      <h3>PharmaScan Lens, Pharmaceutical Package Scanner</h3>
+      <p class="stack">Python, OpenCV, EasyOCR</p>
+      <p>Medicine package scanner using OCR and barcode detection, with modules for batch tracking, expiry detection and recall management.</p>
+    </article>
+  </div>
+  <p style="margin-top:1rem"><a href="https://github.com/violet-rgb" rel="noopener">See more on GitHub</a></p>
+</section>
+
+<section id="education" class="edu">
+  <h2>Education and certifications</h2>
+  <p><strong>B.Tech, Computer Science Engineering</strong><br>Rajadhani Institute of Engineering and Technology, Thiruvananthapuram. 2021 – 2025. CGPA 7.23 / 10.</p>
+  <ul class="chips" aria-label="Certifications">
+    <li>Software Testing (Udemy)</li><li>Python Programming (Udemy)</li><li>Microsoft Power BI</li><li>Tableau</li><li>JIRA</li>
+  </ul>
+  <p style="margin-top:1rem">Participant, Indo-Malaysian International Hackathon, where I worked in a cross-functional team on a data-driven problem.</p>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p>I am open to Implementation Analyst and QA roles. Email is the fastest way to reach me.</p>
+  <a class="big" href="mailto:adithyabiju1133@gmail.com">adithyabiju1133@gmail.com</a>
+  <ul>
+    <li>Phone: <a href="tel:+919072365649">+91 9072365649</a></li>
+    <li>LinkedIn: <a href="https://linkedin.com/in/aadithyaabiju23" rel="noopener">linkedin.com/in/aadithyaabiju23</a></li>
+    <li>GitHub: <a href="https://github.com/violet-rgb" rel="noopener">github.com/violet-rgb</a></li>
+  </ul>
+</section>
+</main>
+
+<footer>Adithya B. Thiruvananthapuram, Kerala, India.</footer>
+</div>
+</body>
+</html>
